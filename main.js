@@ -11,6 +11,9 @@ var STATE_UPGRADES = 3;
 
 var gameState = STATE_SPLASH;
 
+var player = new Player();
+var keyboard = new Keyboard();
+
 var health = 100
 function drawHealth()
 {
@@ -21,6 +24,34 @@ function drawHealth()
     context.fillStyle = "#ff0000";
     context.fillRect(10,10,(health/100)*140,25);
     
+}
+
+var grass = document.createElement("img");
+grass.src = "Background/Grass.png"
+
+var background = [];
+ for(var Y=0;Y<15;Y++)
+    {
+        background[Y] = [];
+        for(var X=0; X<20; X++)
+        background[Y][X] = grass;
+    }
+function drawBackground()
+{
+    for(var Y=0; Y<15; Y++)
+    {
+       for(var X=0; X<20; X++)
+       {
+           context.drawImage(background[Y][X], X*32, Y*32);
+       } 
+    }   
+}
+
+var base = document.createElement("img");
+base.src = "Player, Base/PlayerBase.png"
+function drawBase()
+{
+    context.drawImage(base, canvas.width/2 - 60, canvas.height/2 - 60);
 }
 
 function getDeltaTime()
@@ -64,11 +95,14 @@ function initialize()
     musicBackground.play();
 }
 
-goblin.onload = drawGoblin;
-
 function runGame(deltaTime)
 {
+    drawBackground();
     drawHealth();
+    drawBase();
+    player.update(deltaTime);
+
+    player.draw();
 }
 
 function runGameOver(deltaTime)
