@@ -11,6 +11,18 @@ var STATE_UPGRADES = 3;
 
 var gameState = STATE_SPLASH;
 
+var health = 100
+function drawHealth()
+{
+    context.fillStyle = "#000000";
+    context.fillRect(5,5,150,35);
+    context.fillStyle = "#ccc";
+    context.fillRect(10,10,140,25);
+    context.fillStyle = "#ff0000";
+    context.fillRect(10,10,(health/100)*140,25);
+    
+}
+
 function getDeltaTime()
 {
     endFrameMillis = startFrameMillis;
@@ -40,21 +52,23 @@ function runSplash(deltaTime)
     context.fillText("Loading", (canvas.width / 2) - (context.measureText("Loading").width / 2), 250);
 }
 
-var goblin = document.createElement("img");
-goblin.src = "Goblin.png";
-
-function drawGoblin()
+function initialize()
 {
-    context.fillStyle = "#ccc";
-    context.fillRect(0,0, canvas.width, canvas.height);
-    context.drawImage(goblin, 10, 10);
+    musicBackground = new Howl(
+    {
+        urls: ["Music/background.ogg"],
+        loop: true,
+        buffer: true,
+        volume: 0.1
+    });
+    musicBackground.play();
 }
 
 goblin.onload = drawGoblin;
 
 function runGame(deltaTime)
 {
-    drawGoblin();
+    drawHealth();
 }
 
 function runGameOver(deltaTime)
@@ -84,6 +98,10 @@ function run()
 			break;
     }
 }
+
+var musicBackground
+
+initialize();
 
 //-------------------------------------------------------------------------------
 (function () 
