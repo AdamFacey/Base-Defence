@@ -76,11 +76,11 @@ function runSplash(deltaTime)
         gameState = STATE_GAME;
         return;
     }
-    context.fillStyle = "#000"
-    context.font="30px Arial";
-    context.fillText("Medievil Defence", (canvas.width / 2) - (context.measureText("Medievil Defence").width / 2), 150);
-    context.font="12px Arial";
-    context.fillText("Loading", (canvas.width / 2) - (context.measureText("Loading").width / 2), 250);
+    context.fillStyle = "#8B0000"
+    context.font="48px Palatino Linotype";
+    context.fillText("Medieval Defence", (canvas.width / 2) - (context.measureText("Medieval Defence").width / 2), 150);
+    context.font="20px Palatino Linotype";
+    context.fillText("Loading...", (canvas.width / 2) - (context.measureText("Loading").width / 2), 250);
 }
 
 function initialize()
@@ -107,8 +107,8 @@ function runGame(deltaTime)
 
 function runGameOver(deltaTime)
 {
-     context.fillStyle = "#000"
-    context.font="30px Arial";
+     context.fillStyle = "#8B0000"
+    context.font="48px Palatino Linotype";
     context.fillText("Game Over", (canvas.width / 2) - (context.measureText("Game Over").width / 2), 150);
 }
 
