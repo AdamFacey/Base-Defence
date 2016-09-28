@@ -14,6 +14,17 @@ var gameState = STATE_SPLASH;
 var player = new Player();
 var keyboard = new Keyboard();
 
+
+var splashBackground = document.createElement("img");
+splashBackground.src = "Background/Splash Background.png";
+
+function drawSplashBackground()
+{
+    context.drawImage(splashBackground, 0, 0);
+}
+        
+splashBackground.onload = drawSplashBackground;
+
 var health = 100
 function drawHealth()
 {
@@ -67,7 +78,7 @@ function getDeltaTime()
     return deltaTime;
 }
 
-var splashTimer = 3;
+var splashTimer = 10;
 function runSplash(deltaTime)
 {
     splashTimer -= deltaTime;
@@ -76,6 +87,9 @@ function runSplash(deltaTime)
         gameState = STATE_GAME;
         return;
     }
+
+    drawSplashBackground();
+
     context.fillStyle = "#8B0000"
     context.font="48px Palatino Linotype";
     context.fillText("Medieval Defence", (canvas.width / 2) - (context.measureText("Medieval Defence").width / 2), 150);
