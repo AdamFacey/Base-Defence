@@ -36,6 +36,32 @@ function drawHealth()
     context.fillRect(10,10,(health/100)*140,25);
     
 }
+var attackImage = document.createElement("img");
+attackImage.src = "Buttons, Upgrades/Attack.png";
+function drawAttackUpgrade()
+{
+    context.fillStyle = "#ff0000";
+    context.fillRect(10,375,200,95);
+    context.drawImage(attackImage,105 - 20, 417.5 - 20);
+}
+
+var defenceImage = document.createElement("img");
+defenceImage.src = "Buttons, Upgrades/Defence.png";
+function drawDefenseUpgrade()
+{
+    context.fillStyle = "#4d79ff";
+    context.fillRect(220,375,200,95);
+    context.drawImage(defenceImage,320 - 20, 417.5 - 20);
+}
+
+var resourcesImage = document.createElement("img");
+resourcesImage.src = "Buttons, Upgrades/Resources.png";
+function drawResourcesUpgrade()
+{
+    context.fillStyle = "#ffff00";
+    context.fillRect(430,375,200,95);
+    context.drawImage(resourcesImage,530 - 20, 417.5 - 20);
+}
 
 var grass = document.createElement("img");
 grass.src = "Background/Grass.png"
@@ -78,7 +104,7 @@ function getDeltaTime()
     return deltaTime;
 }
 
-var splashTimer = 10;
+var splashTimer = 3;
 function runSplash(deltaTime)
 {
     splashTimer -= deltaTime;
@@ -112,11 +138,15 @@ function initialize()
 function runGame(deltaTime)
 {
     drawBackground();
-    drawHealth();
     drawBase();
     player.update(deltaTime);
-
     player.draw();
+    drawHealth();
+    drawAttackUpgrade();
+    drawDefenseUpgrade();
+    drawResourcesUpgrade();
+    
+    
 }
 
 function runGameOver(deltaTime)
