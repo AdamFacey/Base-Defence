@@ -14,6 +14,8 @@ var gameState = STATE_SPLASH;
 var player = new Player();
 var keyboard = new Keyboard();
 
+var stateManager = new StateManager();
+stateManager.pushState( new SplashState());
 
 var splashBackground = document.createElement("img");
 splashBackground.src = "Background/Splash Background.png";
@@ -104,25 +106,6 @@ function getDeltaTime()
     return deltaTime;
 }
 
-var splashTimer = 3;
-function runSplash(deltaTime)
-{
-    splashTimer -= deltaTime;
-    if(splashTimer <= 0)
-    {
-        gameState = STATE_GAME;
-        return;
-    }
-
-    drawSplashBackground();
-
-    context.fillStyle = "#8B0000"
-    context.font="48px Palatino Linotype";
-    context.fillText("Medieval Defence", (canvas.width / 2) - (context.measureText("Medieval Defence").width / 2), 150);
-    context.font="20px Palatino Linotype";
-    context.fillText("Loading...", (canvas.width / 2) - (context.measureText("Loading").width / 2), 250);
-}
-
 function initialize()
 {
     musicBackground = new Howl(
@@ -135,27 +118,6 @@ function initialize()
     musicBackground.play();
 }
 
-function runGame(deltaTime)
-{
-    drawBackground();
-    drawBase();
-    player.update(deltaTime);
-    player.draw();
-    drawHealth();
-    drawAttackUpgrade();
-    drawDefenseUpgrade();
-    drawResourcesUpgrade();
-    
-    
-}
-
-function runGameOver(deltaTime)
-{
-     context.fillStyle = "#8B0000"
-    context.font="48px Palatino Linotype";
-    context.fillText("Game Over", (canvas.width / 2) - (context.measureText("Game Over").width / 2), 150);
-}
-
 function run()
 {
     context.fillStyle = "#ccc";
@@ -163,18 +125,8 @@ function run()
 
     var deltaTime = getDeltaTime();
 
-    switch(gameState)
-    {
-        case STATE_SPLASH:
-			runSplash(deltaTime);
-			break;
-		case STATE_GAME:
-			runGame(deltaTime);
-			break;
-		case STATE_GAMEOVER:
-			runGameOver(deltaTime);
-			break;
-    }
+    stateManager.update(deltaTime);
+    stateManager.draw();
 }
 
 var musicBackground
