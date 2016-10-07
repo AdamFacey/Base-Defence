@@ -9,15 +9,22 @@ var STATE_GAME = 1;
 var STATE_GAMEOVER = 2;
 var STATE_UPGRADES = 3;
 
+<<<<<<< HEAD
 var gameState = STATE_SPLASH;
 
 var BULLET_SPEED = 1.5;
 
 var bullet = new Bullet();
 var shoot = new Shoot();
+=======
+>>>>>>> origin/master
 var player = new Player();
 var keyboard = new Keyboard();
 
+var goblin = new Goblin();
+
+var stateManager = new StateManager();
+stateManager.pushState( new SplashState());
 
 var splashBackground = document.createElement("img");
 splashBackground.src = "Background/Splash Background.png";
@@ -108,25 +115,6 @@ function getDeltaTime()
     return deltaTime;
 }
 
-var splashTimer = 3;
-function runSplash(deltaTime)
-{
-    splashTimer -= deltaTime;
-    if(splashTimer <= 0)
-    {
-        gameState = STATE_GAME;
-        return;
-    }
-
-    drawSplashBackground();
-
-    context.fillStyle = "#8B0000"
-    context.font="48px Palatino Linotype";
-    context.fillText("Medieval Defence", (canvas.width / 2) - (context.measureText("Medieval Defence").width / 2), 150);
-    context.font="20px Palatino Linotype";
-    context.fillText("Loading...", (canvas.width / 2) - (context.measureText("Loading").width / 2), 250);
-}
-
 function initialize()
 {
     musicBackground = new Howl(
@@ -139,6 +127,7 @@ function initialize()
     musicBackground.play();
 }
 
+<<<<<<< HEAD
 function runGame(deltaTime)
 {
     drawBackground();
@@ -173,6 +162,8 @@ function runGameOver(deltaTime)
     context.fillText("Game Over", (canvas.width / 2) - (context.measureText("Game Over").width / 2), 150);
 }
 
+=======
+>>>>>>> origin/master
 function run()
 {
     context.fillStyle = "#ccc";
@@ -180,18 +171,8 @@ function run()
 
     var deltaTime = getDeltaTime();
 
-    switch(gameState)
-    {
-        case STATE_SPLASH:
-			runSplash(deltaTime);
-			break;
-		case STATE_GAME:
-			runGame(deltaTime);
-			break;
-		case STATE_GAMEOVER:
-			runGameOver(deltaTime);
-			break;
-    }
+    stateManager.update(deltaTime);
+    stateManager.draw();
 }
 
 var musicBackground
