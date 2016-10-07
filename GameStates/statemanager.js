@@ -24,9 +24,9 @@ StateManager.prototype.popState = function()
 	this.states.pop();
 }
 
-StateManager.prototype.update = function(dt) 
+StateManager.prototype.update = function(deltaTime) 
 {
-	this.states[ this.states.length - 1 ].update(dt);
+	this.states[ this.states.length - 1 ].update(deltaTime);
 }
 
 StateManager.prototype.draw = function() 

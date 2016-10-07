@@ -1,3 +1,6 @@
+var playerX = this.x;
+var playerY = this.y;
+
 var Player = function()
 {
     this.image = document.createElement("img");

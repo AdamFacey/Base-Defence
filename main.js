@@ -9,10 +9,10 @@ var STATE_GAME = 1;
 var STATE_GAMEOVER = 2;
 var STATE_UPGRADES = 3;
 
-var gameState = STATE_SPLASH;
-
 var player = new Player();
 var keyboard = new Keyboard();
+
+var goblin = new Goblin();
 
 var stateManager = new StateManager();
 stateManager.pushState( new SplashState());

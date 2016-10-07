@@ -18,10 +18,16 @@ GameState.prototype.update = function(deltaTime)
     drawBase();
     player.update(deltaTime);
     player.draw();
+    goblin.update(deltaTime);
+    goblin.draw();
     drawHealth();
     drawAttackUpgrade();
     drawDefenseUpgrade();
     drawResourcesUpgrade();
+	if(keyboard.isKeyDown(keyboard.KEY_ONE) == true)
+	{
+		stateManager.pushState(new AttackUpgrade());
+	}
 }
 
 GameState.prototype.draw = function() 
