@@ -7,7 +7,7 @@ var Goblin = function(x,y)
     this.height = 14;
     //this.angle = 0;
     //this.rotation = 0;
-    this.speed = 2;
+    this.speed = 1;
 
     this.image.src = "Enemies/goblin.png";
 };
@@ -18,15 +18,18 @@ Goblin.prototype.update = function(deltaTime)
 
     this.x += Math.cos(this.rotation) * this.speed;
     this.y += Math.sin(this.rotation) * this.speed;*/
-    var dirX = player.x - this.x;
-    var dirY = player.y - this.y;
-
-    hyp = Math.sqrt(dirX*dirX + dirY*dirY);
-    dirX /= hyp;
-    dirY /= hyp;
-
-    this.x += dirY*this.speed;
-    this.y += dirX*this.speed;
+    var dx = this.x - 320; //my position minus the target position
+    var dy = this.y - 240;
+ 
+    //normalise the vector
+    var mag = (dx*dx) + (dy*dy);
+    mag = Math.sqrt(mag);
+   
+    dx = dx/mag;
+    dy = dy/mag;
+ 
+    this.x = this.x - dx;
+    this.y = this.y - dy;
 }
 
 Goblin.prototype.draw = function()
