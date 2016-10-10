@@ -27,6 +27,7 @@ Bullet.prototype.update = function(deltaTime)
     if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true)
     {
         Shoot();
+        this.isDead = false
     }
 }
 
