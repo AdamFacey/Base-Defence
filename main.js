@@ -147,14 +147,12 @@ function runGame(deltaTime)
     drawHealth();
     drawAttackUpgrade();
     drawDefenseUpgrade();
-    drawResourcesUpgrade();
-    
-    
+    drawResourcesUpgrade();    
 }
 
 function runGameOver(deltaTime)
 {
-     context.fillStyle = "#8B0000"
+    context.fillStyle = "#8B0000"
     context.font="48px Palatino Linotype";
     context.fillText("Game Over", (canvas.width / 2) - (context.measureText("Game Over").width / 2), 150);
 }

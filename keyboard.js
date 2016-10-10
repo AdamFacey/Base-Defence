@@ -30,3 +30,8 @@ Keyboard.prototype.isKeyDown = function(keyCode)
 {
     return this.keys[keyCode];
 };
+
+Keyboard.prototype.isKeyUp = function(keyCode)
+{
+    return this.keys[keyCode];
+}
