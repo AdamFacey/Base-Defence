@@ -4,21 +4,36 @@ var AttackUpgrade = function()
     this.prototype = BaseState;
 }
 
-BaseState.prototype.load = function() 
+AttackUpgrade.prototype.load = function() 
 {
+    
 }
 
-BaseState.prototype.unload = function() 
+AttackUpgrade.prototype.unload = function() 
 {
+
 }
 
-BaseState.prototype.update = function(deltaTime) 
+AttackUpgrade.prototype.update = function(deltaTime) 
 {
+    context.fillStyle = "#000000"
+    context.font="20px Palatino Linotype";
+    context.fillText("Damage", 10, 100);
+    context.fillStyle = "#000000"
+    context.font="20px Palatino Linotype";
+    context.fillText("Attack Speed", 10, 150);
+    context.fillStyle = "#000000"
+    context.font="20px Palatino Linotype";
+    context.fillText("Extra Turrets", 10, 200);
+    context.fillStyle = "#000000"
+    context.font="20px Palatino Linotype";
+    context.fillText("Turret Damage", 10, 250);
+
 }
 
-BaseState.prototype.draw = function() 
+AttackUpgrade.prototype.draw = function() 
 {
-    context.fillStyle = "#8B0000"
+    context.fillStyle = "#000000"
     context.font="48px Palatino Linotype";
-    context.fillText("Game Over", (canvas.width / 2) - (context.measureText("Game Over").width / 2), 150);	
+    context.fillText("Upgrades", (canvas.width / 2) - (context.measureText("Upgrades").width / 2), 50);	
 }

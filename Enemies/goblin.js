@@ -14,12 +14,8 @@ var Goblin = function(x,y)
 
 Goblin.prototype.update = function(deltaTime)
 {
-    /*this.rotation = Math.atan2(player.y - this.y, player.x - this.x);
-
-    this.x += Math.cos(this.rotation) * this.speed;
-    this.y += Math.sin(this.rotation) * this.speed;*/
-    var dx = this.x - 320; //my position minus the target position
-    var dy = this.y - 240;
+    var dx = this.x - player.x; //my position minus the target position
+    var dy = this.y - player.y;
  
     //normalise the vector
     var mag = (dx*dx) + (dy*dy);
@@ -37,6 +33,6 @@ Goblin.prototype.draw = function()
     context.save();
     context.translate(this.x, this.y);
     context.rotate(this.rotation);
-    context.drawImage(this.image,this.x, this.y);
+    context.drawImage(this.image,0, 0);
     context.restore();
 }
