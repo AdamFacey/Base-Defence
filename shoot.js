@@ -26,4 +26,3 @@ var Shoot = function()
         // make the boulder alive
         bullet.isDead = false;
     }
-\ No newline at end of file

@@ -9,15 +9,13 @@ var STATE_GAME = 1;
 var STATE_GAMEOVER = 2;
 var STATE_UPGRADES = 3;
 
-<<<<<<< HEAD
 var gameState = STATE_SPLASH;
 
 var BULLET_SPEED = 1.5;
 
 var bullet = new Bullet();
 var shoot = new Shoot();
-=======
->>>>>>> origin/master
+
 var player = new Player();
 var keyboard = new Keyboard();
 
@@ -127,7 +125,6 @@ function initialize()
     musicBackground.play();
 }
 
-<<<<<<< HEAD
 function runGame(deltaTime)
 {
     drawBackground();
@@ -162,8 +159,6 @@ function runGameOver(deltaTime)
     context.fillText("Game Over", (canvas.width / 2) - (context.measureText("Game Over").width / 2), 150);
 }
 
-=======
->>>>>>> origin/master
 function run()
 {
     context.fillStyle = "#ccc";
