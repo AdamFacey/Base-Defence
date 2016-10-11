@@ -36,3 +36,44 @@ Goblin.prototype.draw = function()
     context.drawImage(this.image,0, 0);
     context.restore();
 }
+
+function rand(floor, ceil)
+{
+    return Math.floor( (Math.random()* (ceil-floor)) +floor );
+}
+
+function spawnGoblin()
+{
+    var type = rand(0, 3);
+    
+    var goblin = {};
+
+    goblin.image = document.createElement("img");
+    goblin.image.src = "Enemies/goblin.png";
+    goblin.width = 23;
+    goblin.height = 14;
+
+    var X = canvas.width/2;
+    var Y = canvas.height/2;
+
+    var dirX = rand(-10,10);
+    var dirY = rand(-10,10);
+
+    var magnitude = (dirX * dirX) + (dirY * dirY);
+    if(magnitude != 0)
+    {
+        var oneOverMag = 1 / Math.sqrt(magnitude);
+        dirX *= oneOverMag;
+        dirY *= oneOverMag;
+    }
+    var movX = dirX * canvas.width;
+    var movY = dirY * canvas.height;
+
+    goblin.X = X + movX;
+    goblin.Y = Y + movY;
+
+    goblin.velocityX = -dirX * this.speed;
+    goblin.velocityY = -dirY * this.speed;
+
+    goblins.push(goblin);
+}
