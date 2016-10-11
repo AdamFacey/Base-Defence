@@ -19,7 +19,10 @@ var shoot = new Shoot();
 var player = new Player();
 var keyboard = new Keyboard();
 
+var spawnTimer = 0;
+
 var goblin = new Goblin();
+var goblins = [];
 
 var stateManager = new StateManager();
 stateManager.pushState( new SplashState());
@@ -30,28 +33,41 @@ splashBackground.src = "Background/Splash Background.png";
 function drawSplashBackground()
 {
     context.drawImage(splashBackground, 0, 0);
-}
-        
+}       
 splashBackground.onload = drawSplashBackground;
 
-var health = 100
+var health = 100;
+var startingHealth = 100;
+var maxHealth = health;
+var currentHealth = startingHealth
 function drawHealth()
 {
     context.fillStyle = "#000000";
     context.fillRect(5,5,150,35);
-    context.fillStyle = "#ccc";
-    context.fillRect(10,10,140,25);
     context.fillStyle = "#ff0000";
-    context.fillRect(10,10,(health/100)*140,25);
-    
+    context.fillRect(10,10,140,25);
+    context.fillStyle = "#66ff33";
+    context.fillRect(10,10,(currentHealth/100)*140,25);
+    context.font = "16px Arial";
+    context.fillStyle = "#000000";
+    context.fillText(currentHealth+" / "+maxHealth, 40, 28);
 }
+
+var money = 0;
+function drawMoney()
+{
+    context.font = "20px Arial";
+    context.fillStyle = "#ffff00";
+    context.fillText("$ "+money, 500, 20);
+}
+
 var attackImage = document.createElement("img");
 attackImage.src = "Buttons, Upgrades/Attack.png";
 function drawAttackUpgrade()
 {
     context.fillStyle = "#ff0000";
-    context.fillRect(10,375,200,95);
-    context.drawImage(attackImage,105 - 20, 417.5 - 20);
+    context.fillRect(190,410,80,100);
+    context.drawImage(attackImage,230 - 20, 450 - 20);
 }
 
 var defenceImage = document.createElement("img");
@@ -59,8 +75,8 @@ defenceImage.src = "Buttons, Upgrades/Defence.png";
 function drawDefenseUpgrade()
 {
     context.fillStyle = "#4d79ff";
-    context.fillRect(220,375,200,95);
-    context.drawImage(defenceImage,320 - 20, 417.5 - 20);
+    context.fillRect(280,410,80,100);
+    context.drawImage(defenceImage,320 - 20, 450 - 20);
 }
 
 var resourcesImage = document.createElement("img");
@@ -68,8 +84,8 @@ resourcesImage.src = "Buttons, Upgrades/Resources.png";
 function drawResourcesUpgrade()
 {
     context.fillStyle = "#ffff00";
-    context.fillRect(430,375,200,95);
-    context.drawImage(resourcesImage,530 - 20, 417.5 - 20);
+    context.fillRect(370,410,80,100);
+    context.drawImage(resourcesImage,410 - 20, 450 - 20);
 }
 
 var grass = document.createElement("img");
@@ -123,31 +139,6 @@ function initialize()
         volume: 0.1
     });
     musicBackground.play();
-}
-
-function runGame(deltaTime)
-{
-    drawBackground();
-    drawBase();
-
-    // update and draw the boulder
-    // we want to do this first so that the ballista is drawn on
-    // top of the boulder
-    if(bullet.isDead == false)
-    {
-        bullet.x += bullet.velocityX;
-        bullet.y += bullet.velocityY;
-        context.drawImage(bullet.image,
-        bullet.x - bullet.width/2,
-        bullet.y - bullet.height/2);
-    }
-
-    player.update(deltaTime);
-    player.draw();
-    drawHealth();
-    drawAttackUpgrade();
-    drawDefenseUpgrade();
-    drawResourcesUpgrade();    
 }
 
 function runGameOver(deltaTime)
