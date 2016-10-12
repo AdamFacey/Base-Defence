@@ -45,37 +45,48 @@ GameState.prototype.update = function(deltaTime)
 
     for(var i=0; i<goblins.length; i++)
     {
-        goblins[i].X = goblins[i].X + goblins[i].velocityX;
-        goblins[i].Y = goblins[i].Y + goblins[i].velocityY;
+        goblins[i].update(deltaTime);
 
-            if(goblins[i].X > canvas.width + goblins[i].width/2)
+            if(goblins[i].x > canvas.width + goblins[i].width/2)
             {
-                goblins[i].X = 0;
+                goblins[i].x = 0;
             }
-            if(goblins[i].X < 0 - goblins[i].width/2)
+            if(goblins[i].x < 0 - goblins[i].width/2)
             {
-                goblins[i].X = canvas.width;
+                goblins[i].x = canvas.width;
             }
-            if(goblins[i].Y > canvas.height + goblins[i].height/2)
+            if(goblins[i].y > canvas.height + goblins[i].height/2)
             {
-                goblins[i].Y = 0;
+                goblins[i].y = 0;
             }
-            if(goblins[i].Y < 0 - goblins[i].height/2)
+            if(goblins[i].y < 0 - goblins[i].height/2)
             {
-                goblins[i].Y = canvas.height;
+                goblins[i].y = canvas.height;
             }
     }
 
     for(var i=0; i<goblins.length; i++)
     {
-        context.drawImage(goblins[i].image, goblins[i].X - goblins[i].width/2,
-                            goblins[i].Y - goblins[i].height/2);
+        goblins[i].draw();
     }
     spawnTimer -= deltaTime;
     if(spawnTimer <= 0)
     {
         spawnTimer = 1;
         spawnGoblin();
+    }
+    for(var i=0; i<goblins.length; i++)
+    {
+        if(intersects(
+            player.x - player.width/2,
+            player.y - player.height/2,
+            player.width, player.height,
+            goblins[i].x - goblins[i].width/2,
+            goblins[i].y - goblins[i].height/2,
+            goblins[i].width, goblins[i].height) == true)
+            {
+                stateManager.switchState(new GameOverState());
+            }
     }
 
     player.update(deltaTime);

@@ -1,6 +1,9 @@
 var playerX = this.x;
 var playerY = this.y;
 
+var playerDamage = 10;
+var playerAttackSpeed = 1;
+
 var Player = function()
 {
     this.image = document.createElement("img");

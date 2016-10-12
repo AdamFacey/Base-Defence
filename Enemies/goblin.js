@@ -1,8 +1,33 @@
+var goblinHealth = 25;
+var goblinDamage = 10;
+var goblinAttackSpeed = 1;
+var goblinMoveSpeed = 20;
+
 var Goblin = function(x,y)
 {
     this.image = document.createElement("img");
     this.x = 100;
     this.y = 100;
+
+    var X = canvas.width/2;
+    var Y = canvas.height/2;
+
+    var dirX = rand(-10,10);
+    var dirY = rand(-10,10);
+
+    var magnitude = (dirX * dirX) + (dirY * dirY);
+    if(magnitude != 0)
+    {
+        var oneOverMag = 1 / Math.sqrt(magnitude);
+        dirX *= oneOverMag;
+        dirY *= oneOverMag;
+    }
+    var movX = dirX * canvas.width;
+    var movY = dirY * canvas.height;
+
+    this.x = X + movX;
+    this.y = Y + movY;
+
     this.width = 23;
     this.height = 14;
     //this.angle = 0;
@@ -44,36 +69,6 @@ function rand(floor, ceil)
 
 function spawnGoblin()
 {
-    var type = rand(0, 3);
-    
-    var goblin = {};
-
-    goblin.image = document.createElement("img");
-    goblin.image.src = "Enemies/goblin.png";
-    goblin.width = 23;
-    goblin.height = 14;
-
-    var X = canvas.width/2;
-    var Y = canvas.height/2;
-
-    var dirX = rand(-10,10);
-    var dirY = rand(-10,10);
-
-    var magnitude = (dirX * dirX) + (dirY * dirY);
-    if(magnitude != 0)
-    {
-        var oneOverMag = 1 / Math.sqrt(magnitude);
-        dirX *= oneOverMag;
-        dirY *= oneOverMag;
-    }
-    var movX = dirX * canvas.width;
-    var movY = dirY * canvas.height;
-
-    goblin.X = X + movX;
-    goblin.Y = Y + movY;
-
-    goblin.velocityX = -dirX * this.speed;
-    goblin.velocityY = -dirY * this.speed;
-
-    goblins.push(goblin);
+    var tempGoblin = new Goblin;
+    goblins.push(tempGoblin);
 }
