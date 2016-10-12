@@ -15,21 +15,32 @@ GameState.prototype.update = function(deltaTime)
 {
 	drawBackground();
     drawBase();
-<<<<<<< HEAD
-    bullet.update(deltaTime);
-    bullet.draw();
-=======
 
-    // update and draw the boulder
-    // we want to do this first so that the ballista is drawn on
-    // top of the boulder
-    if(bullet.isDead == false)
+    // update all the bullets
+    for(var i=0; i<bullets.length; i++)
     {
-        bullet.x += bullet.velocityX;
-        bullet.y += bullet.velocityY;
-        context.drawImage(bullet.image,
-        bullet.x - bullet.width/2,
-        bullet.y - bullet.height/2);
+        bullets[i].x += bullets[i].velocityX;
+        bullets[i].y += bullets[i].velocityY;
+        bullets[i].draw();
+    }
+
+    for(var i=0; i<bullets.length; i++)
+    {
+        // check if the bullet has gone out of the screen boundaries
+        // and if so kill it
+        if(bullets[i].x < -bullets[i].width ||
+        bullets[i].x > SCREEN_WIDTH ||
+        bullets[i].y < -bullets[i].height ||
+        bullets[i].y > SCREEN_HEIGHT)
+        {
+            // remove 1 element at position i
+            bullets.splice(i, 1);
+
+            // because we are deleting elements from the middle of the
+            // array, we can only remove 1 at a time. So, as soon as we
+            // remove 1 bullet stop.
+            break;
+        }
     }
 
     for(var i=0; i<goblins.length; i++)
@@ -67,7 +78,6 @@ GameState.prototype.update = function(deltaTime)
         spawnGoblin();
     }
 
->>>>>>> origin/master
     player.update(deltaTime);
     player.draw();
     goblin.update(deltaTime);

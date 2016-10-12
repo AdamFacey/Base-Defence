@@ -140,7 +140,6 @@ function initialize()
     musicBackground.play();
 }
 
-<<<<<<< HEAD
 function runGame(deltaTime)
 {
     drawBackground();
@@ -155,8 +154,6 @@ function runGame(deltaTime)
     drawResourcesUpgrade();    
 }
 
-=======
->>>>>>> origin/master
 function runGameOver(deltaTime)
 {
     context.fillStyle = "#8B0000"

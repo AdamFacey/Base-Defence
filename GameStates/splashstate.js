@@ -28,10 +28,10 @@ SplashState.prototype.draw = function()
     drawSplashBackground();
 
     context.fillStyle = "#8B0000"
-    context.font="48px Palatino Linotype";
+    context.font="60px Palatino Linotype";
     context.fillText("Medieval Defence", (canvas.width / 2) - (context.measureText("Medieval Defence").width / 2), 75);
-    context.font="32px Palatino Linotype";
-    context.fillText("Press Enter To Play", (canvas.width / 2) - (context.measureText("Press Enter To Play").width / 2), 175);
-    context.font="32px Palatino Linotype";
-    context.fillText("Press I For Instructions", (canvas.width / 2) - (context.measureText("Press I For Instructions").width / 2), 225);
+    context.font="28px Palatino Linotype";
+    context.fillText("Press 'Enter' to Play", (canvas.width / 2) - (context.measureText("Press Enter To Play").width / 2), 175);
+    context.font="28px Palatino Linotype";
+    context.fillText("Press 'I' for Instructions", (canvas.width / 2) - (context.measureText("Press I For Instructions").width / 2), 225);
 }
