@@ -15,10 +15,8 @@ GameState.prototype.update = function(deltaTime)
 {
 	drawBackground();
     drawBase();
-<<<<<<< HEAD
     bullet.update(deltaTime);
     bullet.draw();
-=======
 
     // update and draw the boulder
     // we want to do this first so that the ballista is drawn on
@@ -67,7 +65,6 @@ GameState.prototype.update = function(deltaTime)
         spawnGoblin();
     }
 
->>>>>>> origin/master
     player.update(deltaTime);
     player.draw();
     goblin.update(deltaTime);
