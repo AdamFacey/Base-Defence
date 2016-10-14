@@ -27,7 +27,7 @@ var stateManager = new StateManager();
 stateManager.pushState( new SplashState());
 
 var splashBackground = document.createElement("img");
-splashBackground.src = "Background/Splash Background.png";
+splashBackground.src = "Background/Splash Background 2.png";
 
 function drawSplashBackground()
 {
@@ -47,7 +47,7 @@ function drawHealth()
     context.fillRect(10,10,140,25);
     context.fillStyle = "#66ff33";
     context.fillRect(10,10,(currentHealth/100)*140,25);
-    context.font = "16px Arial";
+    context.font = "16px Palatino Linotype";
     context.fillStyle = "#000000";
     context.fillText(currentHealth+" / "+maxHealth, 40, 28);
 }
@@ -55,7 +55,7 @@ function drawHealth()
 var money = 0;
 function drawMoney()
 {
-    context.font = "20px Arial";
+    context.font = "20px Palatino Linotype";
     context.fillStyle = "#ffff00";
     context.fillText("$ "+money, 500, 20);
 }
@@ -163,7 +163,7 @@ function runGameOver(deltaTime)
 
 function run()
 {
-    context.fillStyle = "#ccc";
+    context.fillStyle = "#000000";
     context.fillRect(0,0, canvas.width, canvas.height);
 
     var deltaTime = getDeltaTime();

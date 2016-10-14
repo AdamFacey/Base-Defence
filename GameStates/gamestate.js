@@ -100,6 +100,9 @@ GameState.prototype.update = function(deltaTime)
             }
     }
 
+    collisionGoblin();
+    intersects();
+    
     player.update(deltaTime);
     player.draw();
     goblin.update(deltaTime);

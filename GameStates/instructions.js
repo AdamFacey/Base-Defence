@@ -24,7 +24,7 @@ Instructions.prototype.draw = function()
     context.fillStyle = "#8B0000"
     context.font="48px Palatino Linotype";
     context.fillText("Instructions", (canvas.width / 2) - (context.measureText("Instructions").width / 2), 50);
-    context.font="20px Palatino Linotype";
+    context.font="24px Palatino Linotype";
     context.fillText("'A' and 'D' to rotate", (canvas.width / 2) - (context.measureText("A and D to rotate").width / 2), 150);
     context.fillText("'Spacebar' to shoot", (canvas.width / 2) - (context.measureText("Spacebar to shoot").width / 2), 200);
     context.fillText("'Escape' to exit", (canvas.width / 2) - (context.measureText("Escape to exit").width / 2), 250);
