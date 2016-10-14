@@ -11,18 +11,8 @@ var Bullet = function()
     this.image.src = "Player, Base/Boulder.png"
 };
 
-var shootTimer = 0;
 Bullet.prototype.update = function(deltaTime)
 {
-    // update the shoot timer
-    if(shootTimer > 0)
-    shootTimer -= deltaTime;
-
-    if(keyboard.isKeyDown(keyboard.KEY_SPACE && shootTimer <= 0) == true)
-    {
-        shootTimer += 0.3;
-        Shoot();
-    }
 }
 
 Bullet.prototype.draw = function()

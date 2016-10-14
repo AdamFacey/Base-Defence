@@ -1,3 +1,4 @@
+var shootTimer = 0;
 var GameState = function() 
 {
 	this.prototype = BaseState;
@@ -16,6 +17,16 @@ GameState.prototype.update = function(deltaTime)
 	drawBackground();
     drawBase();
 
+    // update the shoot timer
+    if(shootTimer > 0)
+    shootTimer -= deltaTime;
+
+    if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true && shootTimer <= 0)
+    {
+        shootTimer += 0.3;
+        Shoot();
+    }
+
     // update all the bullets
     for(var i=0; i<bullets.length; i++)
     {
@@ -29,9 +40,9 @@ GameState.prototype.update = function(deltaTime)
         // check if the bullet has gone out of the screen boundaries
         // and if so kill it
         if(bullets[i].x < -bullets[i].width ||
-        bullets[i].x > SCREEN_WIDTH ||
+        bullets[i].x > canvas.width ||
         bullets[i].y < -bullets[i].height ||
-        bullets[i].y > SCREEN_HEIGHT)
+        bullets[i].y > canvas.height)
         {
             // remove 1 element at position i
             bullets.splice(i, 1);
