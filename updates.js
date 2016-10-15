@@ -1,33 +1,5 @@
-var shootTimer = 0;
-var GameState = function() 
+function UpdatesChecks()
 {
-	this.prototype = BaseState;
-}
-
-GameState.prototype.load = function() 
-{
-}
-
-GameState.prototype.unload = function() 
-{
-}
-
-GameState.prototype.update = function(deltaTime) 
-{
-	drawBackground();
-    drawBase();
-
-    // update the shoot timer
-    if(shootTimer > 0)
-    shootTimer -= deltaTime;
-
-    if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true && shootTimer <= 0)
-    {
-        shootTimer += 0.3;
-        Shoot();
-    }
-
-    {
     // update all the bullets
     for(var i=0; i<bullets.length; i++)
     {
@@ -100,34 +72,4 @@ GameState.prototype.update = function(deltaTime)
                 stateManager.switchState(new GameOverState());
             }
     }
-}
-
-    collisionGoblin();
-    intersects();
-    
-    player.update(deltaTime);
-    player.draw();
-    goblin.update(deltaTime);
-    goblin.draw();
-    drawHealth();
-    drawMoney();
-    drawAttackUpgrade();
-    drawDefenseUpgrade();
-    drawResourcesUpgrade();
-	if(keyboard.isKeyDown(keyboard.KEY_ONE) == true)
-	{
-		stateManager.pushState(new AttackUpgrade());
-	}
-    if(keyboard.isKeyDown(keyboard.KEY_TWO) == true)
-	{
-		stateManager.pushState(new DefenceUpgrade());
-	}
-    if(keyboard.isKeyDown(keyboard.KEY_THREE) == true)
-	{
-		stateManager.pushState(new ResourcesUpgrade());
-	}
-}
-
-GameState.prototype.draw = function() 
-{
 }
