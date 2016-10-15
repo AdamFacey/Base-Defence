@@ -13,10 +13,12 @@ function collisionGoblin()
             goblins[i].height/2,
             goblins[i].width, goblins[i].height) == true)
             {
+                money = money + 50;
                 goblins.splice(i, 1);
                 bullets.splice(j, 1);
                 break;
             }
         }
     }
+    drawMoney()
 }

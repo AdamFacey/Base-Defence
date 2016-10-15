@@ -1,6 +1,7 @@
 var SplashState = function() 
 {
     this.prototype = BaseState;
+    money = 0;
 }
 
 SplashState.prototype.load = function() 
