@@ -10,13 +10,17 @@ function collisionGoblin()
                 bullets[j].height/2,
             bullets[j].width, bullets[j].height,
             goblins[i].x - goblins[i].width/2, goblins[i].y -
-            goblins[i].height/2,
+                goblins[i].height/2,
             goblins[i].width, goblins[i].height) == true)
             {
-                money = money + 50;
-                goblins.splice(i, 1);
+                goblins[i].hp -= 13;
                 bullets.splice(j, 1);
-                break;
+                
+                if((goblins[i].hp < 1) == true)
+                {
+                    money = money + 50;
+                    goblins.splice(i, 1);
+                }
             }
         }
     }

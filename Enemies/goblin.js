@@ -25,6 +25,7 @@ var Goblin = function(x,y)
     var movX = dirX * canvas.width;
     var movY = dirY * canvas.height;
 
+    this.hp = goblinHealth;
     this.x = X + movX;
     this.y = Y + movY;
 
