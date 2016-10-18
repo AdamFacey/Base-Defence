@@ -84,7 +84,7 @@ GameState.prototype.update = function(deltaTime)
     spawnTimer -= deltaTime;
     if(spawnTimer <= 0)
     {
-        spawnTimer = 1;
+        spawnTimer = 3;
         spawnGoblin();
     }
     for(var i=0; i<goblins.length; i++)

@@ -11,7 +11,7 @@ var STATE_UPGRADES = 3;
 
 var gameState = STATE_SPLASH;
 
-var BULLET_SPEED = 1.5;
+var BULLET_SPEED = 2.5;
 var bullets = [];
 var bullet = new Bullet();
 
@@ -38,7 +38,8 @@ splashBackground.onload = drawSplashBackground;
 var health = 100;
 var startingHealth = 100;
 var maxHealth = health;
-var currentHealth = startingHealth
+var currentHealth = startingHealth;
+//have yet to fix max health bar problem
 function drawHealth()
 {
     context.fillStyle = "#000000";
@@ -46,7 +47,7 @@ function drawHealth()
     context.fillStyle = "#ff0000";
     context.fillRect(10,10,140,25);
     context.fillStyle = "#66ff33";
-    context.fillRect(10,10,(currentHealth/100)*140,25);
+    context.fillRect(10,10,(currentHealth/maxHealth)*140,25);
     context.font = "16px Palatino Linotype";
     context.fillStyle = "#000000";
     context.fillText(currentHealth+" / "+maxHealth, 40, 28);
@@ -163,7 +164,7 @@ function runGameOver(deltaTime)
 
 function run()
 {
-    context.fillStyle = "#000000";
+    context.fillStyle = "#1a1a1a";
     context.fillRect(0,0, canvas.width, canvas.height);
 
     var deltaTime = getDeltaTime();

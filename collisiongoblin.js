@@ -18,7 +18,7 @@ function collisionGoblin()
                 
                 if((goblins[i].hp < 1) == true)
                 {
-                    money = money + 50;
+                    money = money + 10;
                     goblins.splice(i, 1);
                 }
             }
