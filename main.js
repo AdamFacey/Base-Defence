@@ -27,7 +27,7 @@ var stateManager = new StateManager();
 stateManager.pushState( new SplashState());
 
 var splashBackground = document.createElement("img");
-splashBackground.src = "Background/Splash Background 2.png";
+splashBackground.src = "Background/Splash Background 4.png";
 
 function drawSplashBackground()
 {
@@ -43,6 +43,15 @@ function drawMenuBackground()
     context.drawImage(menuBackground, 0, 0);
 }       
 menuBackground.onload = drawMenuBackground;
+
+var sign = document.createElement("img");
+sign.src = "Background/Sign6.png";
+
+function drawSign()
+{
+    context.drawImage(sign, (canvas.width / 4), 10);
+}       
+sign.onload = drawSign;
 
 var health = 100;
 var startingHealth = 100;
