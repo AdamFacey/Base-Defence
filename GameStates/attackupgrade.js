@@ -29,6 +29,8 @@ AttackUpgrade.prototype.update = function(deltaTime)
 
 AttackUpgrade.prototype.draw = function() 
 {
+    drawMenuBackground();
+
     context.fillStyle = "#8B0000";
     context.font="48px Palatino Linotype";
     context.fillText("Attack", (canvas.width / 2) - (context.measureText("Attack").width / 2), 50);

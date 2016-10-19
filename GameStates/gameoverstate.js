@@ -22,6 +22,8 @@ GameOverState.prototype.update = function(deltaTime)
 
 GameOverState.prototype.draw = function() 
 {
+    drawMenuBackground();
+    
 	//Resetting everything
 	player.angle = 0;
 	player.rotation = 0;

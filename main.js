@@ -35,6 +35,15 @@ function drawSplashBackground()
 }       
 splashBackground.onload = drawSplashBackground;
 
+var menuBackground = document.createElement("img");
+menuBackground.src = "Background/Bricks 3.png";
+
+function drawMenuBackground()
+{
+    context.drawImage(menuBackground, 0, 0);
+}       
+menuBackground.onload = drawMenuBackground;
+
 var health = 100;
 var startingHealth = 100;
 var maxHealth = health;

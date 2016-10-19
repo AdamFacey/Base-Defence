@@ -21,6 +21,8 @@ Instructions.prototype.update = function(dt)
 
 Instructions.prototype.draw = function() 
 {
+    drawMenuBackground();
+    
     context.fillStyle = "#8B0000"
     context.font="48px Palatino Linotype";
     context.fillText("Instructions", (canvas.width / 2) - (context.measureText("Instructions").width / 2), 50);

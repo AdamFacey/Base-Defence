@@ -29,6 +29,8 @@ ResourcesUpgrade.prototype.update = function(deltaTime)
 
 ResourcesUpgrade.prototype.draw = function() 
 {
+    drawMenuBackground();
+    
     context.fillStyle = "#8B0000"
     context.font="48px Palatino Linotype";
     context.fillText("Resources", (canvas.width / 2) - (context.measureText("Resources").width / 2), 50);
