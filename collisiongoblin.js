@@ -1,9 +1,9 @@
 function collisionGoblin()
 {
     // check if any bullet intersects any goblin. If so, kill them both.
-    for(var i=0; i<goblins.length; i++)
+    for(var j=0; j<bullets.length; j++)
     {
-        for(var j=0; j<bullets.length; j++)
+        for(var i=0; i<goblins.length; i++)
         {
             if(intersects(
             bullets[j].x - bullets[j].width/2, bullets[j].y -
@@ -20,6 +20,7 @@ function collisionGoblin()
                 {
                     money = money + 10;
                     goblins.splice(i, 1);
+                    break;
                 }
             }
         }
