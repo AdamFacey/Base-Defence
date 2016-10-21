@@ -112,9 +112,9 @@ GameState.prototype.update = function(deltaTime)
     drawVariableBar();
     drawHealth();
     drawMoney();
-    drawAttackUpgrade();
-    drawDefenseUpgrade();
-    drawResourcesUpgrade();
+    //drawAttackUpgrade();
+    //drawDefenseUpgrade();
+    //drawResourcesUpgrade();
 	if(keyboard.isKeyDown(keyboard.KEY_ONE) == true)
 	{
 		stateManager.pushState(new AttackUpgrade());

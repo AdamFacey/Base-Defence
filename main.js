@@ -45,7 +45,7 @@ function drawMenuBackground()
 menuBackground.onload = drawMenuBackground;
 
 var variableBar = document.createElement("img");
-variableBar.src = "Background/Variable Bar 2.png";
+variableBar.src = "Background/Variable Bar 6.png";
 
 function drawVariableBar()
 {
@@ -71,49 +71,49 @@ function drawHealth()
 {
     context.fillStyle = "#000000";
     context.fillRect(5,5,150,35);
-    context.fillStyle = "#ff0000";
+    context.fillStyle = "#8B0000";
     context.fillRect(10,10,140,25);
-    context.fillStyle = "#66ff33";
+    context.fillStyle = "#4169E1";
     context.fillRect(10,10,(currentHealth/maxHealth)*140,25);
-    context.font = "16px Palatino Linotype";
-    context.fillStyle = "#000000";
+    context.font = "bold 16px Palatino Linotype";
+    context.fillStyle = "#ffffff";
     context.fillText(currentHealth+" / "+maxHealth, 40, 28);
 }
 
 var money = 0;
 function drawMoney()
 {
-    context.font = "20px Palatino Linotype";
+    context.font = "bold 20px Palatino Linotype";
     context.fillStyle = "#FFD700";
-    context.fillText("$ "+money, 490, 28);
+    context.fillText("$ "+money, 490, 30);
 }
 
-var attackImage = document.createElement("img");
-attackImage.src = "Buttons, Upgrades/Attack.png";
-function drawAttackUpgrade()
-{
-    context.fillStyle = "#8B0000";
-    context.fillRect(190,410,80,100);
-    context.drawImage(attackImage,230 - 20, 450 - 20);
-}
+//var attackImage = document.createElement("img");
+//attackImage.src = "Buttons, Upgrades/Attack.png";
+//function drawAttackUpgrade()
+//{
+//    context.fillStyle = "#8B0000";
+//    context.fillRect(190,410,80,100);
+//    context.drawImage(attackImage,230 - 20, 450 - 20);
+//}
 
-var defenceImage = document.createElement("img");
-defenceImage.src = "Buttons, Upgrades/Defence.png";
-function drawDefenseUpgrade()
-{
-    context.fillStyle = "#4169E1";
-    context.fillRect(280,410,80,100);
-    context.drawImage(defenceImage,320 - 20, 450 - 20);
-}
+//var defenceImage = document.createElement("img");
+//defenceImage.src = "Buttons, Upgrades/Defence.png";
+//function drawDefenseUpgrade()
+//{
+//    context.fillStyle = "#4169E1";
+//    context.fillRect(280,410,80,100);
+//    context.drawImage(defenceImage,320 - 20, 450 - 20);
+//}
 
-var resourcesImage = document.createElement("img");
-resourcesImage.src = "Buttons, Upgrades/Resources.png";
-function drawResourcesUpgrade()
-{
-    context.fillStyle = "#FFD700";
-    context.fillRect(370,410,80,100);
-    context.drawImage(resourcesImage,410 - 20, 450 - 20);
-}
+//var resourcesImage = document.createElement("img");
+//resourcesImage.src = "Buttons, Upgrades/Resources.png";
+//function drawResourcesUpgrade()
+//{
+//    context.fillStyle = "#FFD700";
+//    context.fillRect(370,410,80,100);
+//    context.drawImage(resourcesImage,410 - 20, 450 - 20);
+//}
 
 var grass = document.createElement("img");
 grass.src = "Background/Grass.png"
@@ -177,9 +177,9 @@ function runGame(deltaTime)
     player.update(deltaTime);
     player.draw();
     drawHealth();
-    drawAttackUpgrade();
-    drawDefenseUpgrade();
-    drawResourcesUpgrade();    
+    //drawAttackUpgrade();
+    //drawDefenseUpgrade();
+    //drawResourcesUpgrade();    
 }
 
 function runGameOver(deltaTime)
