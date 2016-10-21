@@ -109,6 +109,7 @@ GameState.prototype.update = function(deltaTime)
     player.draw();
     goblin.update(deltaTime);
     goblin.draw();
+    drawVariableBar();
     drawHealth();
     drawMoney();
     drawAttackUpgrade();

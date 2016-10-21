@@ -36,7 +36,7 @@ function drawSplashBackground()
 splashBackground.onload = drawSplashBackground;
 
 var menuBackground = document.createElement("img");
-menuBackground.src = "Background/Bricks 3.png";
+menuBackground.src = "Background/Bricks 5.png";
 
 function drawMenuBackground()
 {
@@ -44,14 +44,23 @@ function drawMenuBackground()
 }       
 menuBackground.onload = drawMenuBackground;
 
-var sign = document.createElement("img");
-sign.src = "Background/Sign6.png";
+var variableBar = document.createElement("img");
+variableBar.src = "Background/Variable Bar 2.png";
 
-function drawSign()
+function drawVariableBar()
 {
-    context.drawImage(sign, (canvas.width / 4), 10);
+    context.drawImage(variableBar, 0, 0);
 }       
-sign.onload = drawSign;
+variableBar.onload = drawVariableBar;
+
+//var sign = document.createElement("img");
+//sign.src = "Background/Sign6.png";
+
+//function drawSign()
+//{
+//    context.drawImage(sign, (canvas.width / 4), 10);
+//}       
+//sign.onload = drawSign;
 
 var health = 100;
 var startingHealth = 100;
@@ -75,15 +84,15 @@ var money = 0;
 function drawMoney()
 {
     context.font = "20px Palatino Linotype";
-    context.fillStyle = "#ffff00";
-    context.fillText("$ "+money, 500, 20);
+    context.fillStyle = "#FFD700";
+    context.fillText("$ "+money, 490, 28);
 }
 
 var attackImage = document.createElement("img");
 attackImage.src = "Buttons, Upgrades/Attack.png";
 function drawAttackUpgrade()
 {
-    context.fillStyle = "#ff0000";
+    context.fillStyle = "#8B0000";
     context.fillRect(190,410,80,100);
     context.drawImage(attackImage,230 - 20, 450 - 20);
 }
@@ -92,7 +101,7 @@ var defenceImage = document.createElement("img");
 defenceImage.src = "Buttons, Upgrades/Defence.png";
 function drawDefenseUpgrade()
 {
-    context.fillStyle = "#4d79ff";
+    context.fillStyle = "#4169E1";
     context.fillRect(280,410,80,100);
     context.drawImage(defenceImage,320 - 20, 450 - 20);
 }
@@ -101,7 +110,7 @@ var resourcesImage = document.createElement("img");
 resourcesImage.src = "Buttons, Upgrades/Resources.png";
 function drawResourcesUpgrade()
 {
-    context.fillStyle = "#ffff00";
+    context.fillStyle = "#FFD700";
     context.fillRect(370,410,80,100);
     context.drawImage(resourcesImage,410 - 20, 450 - 20);
 }

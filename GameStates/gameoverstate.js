@@ -33,7 +33,7 @@ GameOverState.prototype.draw = function()
 	
 	money = 0;
 	
-	context.fillStyle = "#8B0000"
+	context.fillStyle = "#DC143C"
     context.font="60px Palatino Linotype";
     context.fillText("Game Over", (canvas.width / 2) - (context.measureText("Game Over").width / 2), 150);
     context.font="28px Palatino Linotype";
