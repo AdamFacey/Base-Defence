@@ -27,7 +27,7 @@ var stateManager = new StateManager();
 stateManager.pushState( new SplashState());
 
 var splashBackground = document.createElement("img");
-splashBackground.src = "Background/Splash Background 4.png";
+splashBackground.src = "Background/Splash Background.png";
 
 function drawSplashBackground()
 {
@@ -36,7 +36,7 @@ function drawSplashBackground()
 splashBackground.onload = drawSplashBackground;
 
 var menuBackground = document.createElement("img");
-menuBackground.src = "Background/Bricks 5.png";
+menuBackground.src = "Background/Bricks.png";
 
 function drawMenuBackground()
 {
@@ -45,22 +45,13 @@ function drawMenuBackground()
 menuBackground.onload = drawMenuBackground;
 
 var variableBar = document.createElement("img");
-variableBar.src = "Background/Variable Bar 6.png";
+variableBar.src = "Background/Variable Bar.png";
 
 function drawVariableBar()
 {
     context.drawImage(variableBar, 0, 0);
 }       
 variableBar.onload = drawVariableBar;
-
-//var sign = document.createElement("img");
-//sign.src = "Background/Sign6.png";
-
-//function drawSign()
-//{
-//    context.drawImage(sign, (canvas.width / 4), 10);
-//}       
-//sign.onload = drawSign;
 
 var health = 100;
 var startingHealth = 100;
