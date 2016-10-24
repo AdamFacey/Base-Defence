@@ -97,7 +97,14 @@ GameState.prototype.update = function(deltaTime)
             goblins[i].y - goblins[i].height/2,
             goblins[i].width, goblins[i].height) == true)
             {
-                stateManager.switchState(new GameOverState());
+                currentHealth -= 10;
+
+                if(currentHealth <1)
+                {
+                    stateManager.switchState(new GameOverState());
+                }
+                goblins.splice(i, 1);
+                break;
             }
     }
 }
