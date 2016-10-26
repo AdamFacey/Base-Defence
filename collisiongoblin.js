@@ -20,8 +20,9 @@ function collisionGoblin()
                 {
                     money = money + 10;
                     goblins.splice(i, 1);
-                    break;
+                    
                 }
+                break;
             }
         }
     }
