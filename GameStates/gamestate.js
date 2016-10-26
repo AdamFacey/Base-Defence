@@ -97,13 +97,18 @@ GameState.prototype.update = function(deltaTime)
             goblins[i].y - goblins[i].height/2,
             goblins[i].width, goblins[i].height) == true)
             {
-                currentHealth -= 10;
+                attackTimer -= deltaTime
+                if (attackTimer <= 0)
+                {
+                    attackTimer = 1;
+                    currentHealth -= 10;
+                }
 
                 if(currentHealth <1)
                 {
                     stateManager.switchState(new GameOverState());
                 }
-                goblins.splice(i, 1);
+                //goblins.splice(i, 1);
                 break;
             }
     }

@@ -19,6 +19,7 @@ var player = new Player();
 var keyboard = new Keyboard();
 
 var spawnTimer = 0;
+var attackTimer = 0;
 
 var goblin = new Goblin();
 var goblins = [];
