@@ -15,8 +15,6 @@ GameState.prototype.unload = function()
 GameState.prototype.update = function(deltaTime) 
 {
 	drawBackground();
-    goblin.update(deltaTime);
-    goblin.draw();
     drawBase();
 
     // update the shoot timer
