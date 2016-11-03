@@ -55,6 +55,65 @@ GameState.prototype.update = function(deltaTime)
         }
     }
 
+    for(var i=0; i<gremlins.length; i++)
+    {
+        gremlins[i].update(deltaTime);
+
+            if(gremlins[i].x > canvas.width + gremlins[i].width/2)
+            {
+                gremlins[i].x = 0;
+            }
+            if(gremlins[i].x < 0 - gremlins[i].width/2)
+            {
+                gremlins[i].x = canvas.width;
+            }
+            if(gremlins[i].y > canvas.height + gremlins[i].height/2)
+            {
+                gremlins[i].y = 0;
+            }
+            if(gremlins[i].y < 0 - gremlins[i].height/2)
+            {
+                gremlins[i].y = canvas.height;
+            }
+    }
+
+    for(var i=0; i<gremlins.length; i++)
+    {
+        gremlins[i].draw();
+    }
+    spawnTimer -= deltaTime;
+    if(spawnTimer <= 0)
+    {
+        spawnTimer = 3;
+        spawnGoblin();
+    }
+    for(var i=0; i<gremlins.length; i++)
+    {
+        if(intersects(
+            player.x - player.width/2,
+            player.y - player.height/2,
+            player.width, player.height,
+            gremlins[i].x - gremlins[i].width/2,
+            gremlins[i].y - gremlins[i].height/2,
+            gremlins[i].width, gremlins[i].height) == true)
+            {
+                attackTimer -= deltaTime
+                if (attackTimer <= 0)
+                {
+                    attackTimer = 1;
+                    currentHealth -= 10;
+                }
+
+                if(currentHealth <1)
+                {
+                    stateManager.switchState(new GameOverState());
+                }
+                //gremlins.splice(i, 1);
+                break;
+            }
+    }
+
+
     for(var i=0; i<goblins.length; i++)
     {
         goblins[i].update(deltaTime);
@@ -114,6 +173,7 @@ GameState.prototype.update = function(deltaTime)
     }
 }
 
+    collisionGremlin();
     collisionGoblin();
     intersects();
     
