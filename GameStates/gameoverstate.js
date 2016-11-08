@@ -1,4 +1,3 @@
-
 var GameOverState = function() 
 {
 	this.prototype = BaseState;
@@ -29,9 +28,17 @@ GameOverState.prototype.draw = function()
 	player.rotation = 0;
 	
 	goblins.splice(0, goblins.length);
+	gremlins.splice(0, gremlins.length);
 	bullets.splice(0, bullets.length);
+	/*turrets.splice(0, turrets.length);
+	ogres.splice(0, ogres.length);*/
 	
 	money = 0;
+	currentHealth = startingHealth;
+	maxHealth = startingHealth;
+	playerDamage = 10;
+	playerAttackSpeed = 1;
+	maxShootCooldown = 0.3;
 	
 	context.fillStyle = "#DC143C"
     context.font="60px Palatino Linotype";
