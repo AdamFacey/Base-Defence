@@ -15,7 +15,6 @@ GameState.prototype.unload = function()
 GameState.prototype.update = function(deltaTime) 
 {
 	drawBackground();
-    drawBase();
 
     // update the shoot timer
     if(shootTimer > 0)
@@ -23,17 +22,8 @@ GameState.prototype.update = function(deltaTime)
 
     if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true && shootTimer <= 0)
     {
-        shootTimer += 0.3;
+        shootTimer += maxShootTimer;
         Shoot();
-    }
-
-    {
-    // update all the bullets
-    for(var i=0; i<bullets.length; i++)
-    {
-        bullets[i].x += bullets[i].velocityX;
-        bullets[i].y += bullets[i].velocityY;
-        bullets[i].draw();
     }
 
     for(var i=0; i<bullets.length; i++)
@@ -82,9 +72,17 @@ GameState.prototype.update = function(deltaTime)
         gremlins[i].draw();
     }
     spawnTimer -= deltaTime;
+	if(spawnTimer = 9)
+	{
+		spawnGremlin();
+	}
+	if(spawnTimer = 6)
+	{
+		spawnGoblin();
+	}
     if(spawnTimer <= 0)
     {
-        spawnTimer = 3;
+        spawnTimer = 12;
         spawnGoblin();
     }
     for(var i=0; i<gremlins.length; i++)
@@ -108,9 +106,10 @@ GameState.prototype.update = function(deltaTime)
                 {
                     stateManager.switchState(new GameOverState());
                 }
-                //gremlins.splice(i, 1);
+                gremlins.splice(i, 1);
                 break;
             }
+		gremlins[i].draw();
     }
 
 
@@ -140,12 +139,12 @@ GameState.prototype.update = function(deltaTime)
     {
         goblins[i].draw();
     }
-    spawnTimer -= deltaTime;
+    /*spawnTimer -= deltaTime;
     if(spawnTimer <= 0)
     {
         spawnTimer = 3;
         spawnGoblin();
-    }
+    }*/
     for(var i=0; i<goblins.length; i++)
     {
         if(intersects(
@@ -171,7 +170,17 @@ GameState.prototype.update = function(deltaTime)
                 break;
             }
     }
-}
+	
+	//Drawn base here to hide bugged enemy, yet not hide bullets/player
+	drawBase();
+	
+	// update all the bullets
+    for(var i=0; i<bullets.length; i++)
+    {
+        bullets[i].x += bullets[i].velocityX;
+        bullets[i].y += bullets[i].velocityY;
+        bullets[i].draw();
+    }
 
     collisionGremlin();
     collisionGoblin();
