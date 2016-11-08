@@ -1,11 +1,13 @@
 var playerX = this.x;
 var playerY = this.y;
 
-var playerDamage = 10;
-var playerAttackSpeed = 1;
-
 var Player = function()
 {
+	this.damage = 10;
+	this.currentHealth = 100;
+	this.maxHealth = 100;
+	this.maxShootCooldown = 0.3;
+	
     this.image = document.createElement("img");
     this.x = canvas.width/2;
     this.y = canvas.height/2;
