@@ -1,4 +1,3 @@
-
 var AttackUpgrade = function() 
 {
     this.prototype = BaseState;
@@ -20,11 +19,25 @@ AttackUpgrade.prototype.update = function(deltaTime)
 	{
 		stateManager.popState(new AttackUpgrade());
 	}
-
-    context.fillStyle = "#ffffff";
-    context.font="24px Palatino Linotype";
-    context.fillText("Current = "+playerDamage,120,135);
-    context.fillText("Current = "+playerAttackSpeed,120,210);
+	if(keyboard.isKeyDown(keyboard.KEY_ZERO) == true)
+	{
+		if(money - upgradePrice >= 0)
+		{
+			playerDamage = playerDamage + 10;
+			money = money - upgradePrice;
+			upgradePrice = upgradePrice + increasePrice;
+		}
+	}
+	if(keyboard.isKeyDown(keyboard.KEY_NINE) == true)
+	{
+		if(money - upgradePrice >= 0)
+		{
+			playerAttackSpeed = playerAttackSpeed - 0.1;
+			maxShootCooldown = maxShootCooldown - 0.05;
+			money = money - upgradePrice;
+			upgradePrice = upgradePrice + increasePrice;
+		}
+	}
 }
 
 AttackUpgrade.prototype.draw = function() 
@@ -51,4 +64,9 @@ AttackUpgrade.prototype.draw = function()
     context.fillText("Upgrade",115,210);
     context.fillText("Upgrade",115,285);
     context.fillText("Upgrade",115,360);
+	
+	context.fillStyle = "#ffffff";
+    context.font="24px Palatino Linotype";
+    context.fillText("Current = "+playerDamage,300,135);
+    context.fillText("Current = "+playerAttackSpeed,300,210);
 }
