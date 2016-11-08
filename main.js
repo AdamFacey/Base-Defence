@@ -23,6 +23,15 @@ var attackTimer = 0;
 
 var goblin = new Goblin();
 var goblins = [];
+var gremlin = new Gremlin();
+var gremlins = [];
+/*var ogre = new Ogre();
+var ogres = [];
+var bomber = new Bomber();
+var bombers = [];
+
+var turrets = new Turrets();
+var turrets = [];*/
 
 var stateManager = new StateManager();
 stateManager.pushState( new SplashState());
@@ -56,9 +65,7 @@ variableBar.onload = drawVariableBar;
 
 var health = 100;
 var startingHealth = 100;
-var maxHealth = health;
-var currentHealth = startingHealth;
-//have yet to fix max health bar problem
+var maxHealth = startingHealth;
 function drawHealth()
 {
     context.fillStyle = "#000000";
